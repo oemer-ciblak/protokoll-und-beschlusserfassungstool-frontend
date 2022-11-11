@@ -1,0 +1,109 @@
+<h2>Protokoll erstellen</h2>
+<div class="dialog-header">
+  <mat-form-field class="example-full-width" appearance="outline">
+    <mat-label>Titel</mat-label>
+    <input matInput placeholder="Ex. Pizza" name="title" [(ngModel)]="title" value="{{title}}">
+  </mat-form-field>
+  <probeto-status></probeto-status>
+</div>
+<mat-dialog-content class="dialog-content mat-typography">
+  <div class="metadata-form">
+    <div class="form-row">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Autor</mat-label>
+        <input matInput placeholder="Ex. Pizza" name="author" [(ngModel)]="author" value="{{author}}">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Leiter</mat-label>
+        <input matInput placeholder="Ex. Pizza" name="leader" [(ngModel)]="leader" value="{{leader}}">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Teilnehmer</mat-label>
+        <mat-select [formControl]="participants" multiple (selectionChange)="changeParticipants($event.value)">
+          <mat-option *ngFor="let participant of participantsList" [value]="participant">{{participant.firstname}} {{participant.lastname}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-row">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Schuljahrbeginn</mat-label>
+        <input type="number" min="1990" max="2090" matInput placeholder="Ex. Pizza" name="schoolYear" [(ngModel)]="schoolYear" value="{{schoolYear}}">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Konferenztyp</mat-label>
+        <mat-select [formControl]="conferenceType">
+          <mat-option *ngFor="let conferenceType of conferenceTypes" [value]="conferenceType">{{conferenceType}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-row">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Raum</mat-label>
+        <input matInput placeholder="Ex. Pizza" name="room" [(ngModel)]="room" value="{{room}}">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Beginn</mat-label>
+        <input matInput placeholder="Ex. Pizza" name="meetingStart" [(ngModel)]="meetingStart" value="{{meetingStart}}">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Ende</mat-label>
+        <input matInput placeholder="Ex. Pizza" name="meetingEnd" [(ngModel)]="meetingEnd" value="{{meetingEnd}}">
+      </mat-form-field>
+    </div>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Protokollbeschreibung</mat-label>
+      <textarea matInput placeholder="Ex. It makes me feel..." name="description" [(ngModel)]="description"></textarea>
+    </mat-form-field>
+  </div>
+
+  <h3>Tagesordnungspunkte ({{this.agendaItems.length}})</h3>
+
+  <mat-accordion>
+    <mat-expansion-panel
+      *ngFor="let agendaItem of agendaItems"
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{agendaItem.title}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="metadata-form">
+        <div class="form-row">
+          <mat-form-field class="agenda-item" appearance="outline">
+            <mat-label>Tagesordnungspunkt</mat-label>
+            <input matInput placeholder="Ex. Pizza" name="agendaItem.title" [(ngModel)]="agendaItem.title" [value]="agendaItem.title">
+          </mat-form-field>
+        </div>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Notizen</mat-label>
+          <textarea matInput [(ngModel)]="agendaItem.notes" name="agendaItem.notes" placeholder="Ex. It makes me feel..."></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Beschluss</mat-label>
+          <textarea matInput placeholder="Ex. It makes me feel..." [(ngModel)]="agendaItem.decision" name="agendaItem.decision"></textarea>
+        </mat-form-field>
+      </div>
+      <button (click)="deleteAgendaItem(agendaItem.id)" style="float: right;" color="warn" mat-button>Löschen</button>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <button (click)="addAgendaItem()" matTooltip="Tagesordnungspunkt erstellen" mat-fab color="primary" class="create-agenda-item-button" aria-label="Example icon button with a delete icon">
+    <mat-icon>add</mat-icon>
+  </button>
+
+</mat-dialog-content>
+<div class="footer">
+  <mat-dialog-actions align="end">
+    <button mat-button cdkFocusInitial mat-dialog-close>Abbrechen</button>
+    <button mat-button mat-dialog-close (click)="createProtocol()">Protokoll erstellen</button>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,8 @@
+<div class="wrapper">
+  <div class="overview-layout">
+    <probeto-file-card *ngFor="let protocol of protocols" [protocol]="protocol"></probeto-file-card>
+  </div>
+  <button (click)="openDialog()" matTooltip="Protokoll erstellen" mat-fab color="primary" class="create-protocol-button" aria-label="Example icon button with a delete icon">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

@@ -1,0 +1,11 @@
+<mat-card class="example-card" (click)="openDialog()">
+  <div class="card-header">
+    <mat-card-title>{{protocol.title}}</mat-card-title>
+    <probeto-status [status]="protocol.status"></probeto-status>
+  </div>
+  <h3>{{protocol.creationDate | date}}</h3>
+  <mat-card-subtitle>{{protocol.room}}</mat-card-subtitle>
+  <mat-card-content>
+    <p>{{protocol.description}}</p>
+  </mat-card-content>
+</mat-card>

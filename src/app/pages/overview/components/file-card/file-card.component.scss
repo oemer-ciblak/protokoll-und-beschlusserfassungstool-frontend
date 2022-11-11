@@ -1,0 +1,10 @@
+.example-card {
+  max-width: 400px;
+  cursor: pointer;
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

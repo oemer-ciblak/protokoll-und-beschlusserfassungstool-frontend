@@ -1,0 +1,279 @@
+<div class="dialog-header">
+  <mat-form-field class="example-full-width" appearance="outline">
+    <mat-label>Titel</mat-label>
+    <input [readonly]="isDone" matInput placeholder="Ex. Pizza" name="data.title" [(ngModel)]="data.title" value="{{data.title}}">
+  </mat-form-field>
+  <probeto-status [status]="data.status"></probeto-status>
+</div>
+<mat-dialog-content class="dialog-content mat-typography">
+  <div class="metadata-form">
+    <div class="form-row">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Autor</mat-label>
+        <input [readonly]="isDone" [(ngModel)]="data.author" name="data.author" matInput placeholder="Ex. Pizza" value="{{data.author}}">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Leiter</mat-label>
+        <input matInput placeholder="Ex. Pizza" name="data.leader" [(ngModel)]="data.leader" value="{{data.leader}}">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Teilnehmer</mat-label>
+        <mat-select [disabled]="true" name="data.participants" (ngModelChange)="data.participants" [(ngModel)]="data.participants" multiple>
+          <mat-option *ngFor="let participant of data.participants" [value]="participant">{{participant.firstname}} {{participant.lastname}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-row">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Schuljahrbeginn</mat-label>
+        <input type="number" min="1990" max="2090" matInput placeholder="Ex. Pizza" name="data.schoolYearBeginn" [(ngModel)]="data.schoolYearBeginn" value="{{data.schoolYearBeginn}}">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Konferenztyp</mat-label>
+        <mat-select [formControl]="conferenceType" [(ngModel)]="data.conferenceType">
+          <mat-option *ngFor="let conferenceType of conferenceTypes" [value]="conferenceType.toUpperCase()">{{conferenceType}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-row">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Raum</mat-label>
+        <input matInput placeholder="Ex. Pizza" name="data.room" [(ngModel)]="data.room" value="{{data.room}}">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Beginn</mat-label>
+        <input matInput placeholder="Ex. Pizza" name="data.meetingStart" [(ngModel)]="data.meetingStart" value="{{data.meetingStart}}">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Ende</mat-label>
+        <input matInput placeholder="Ex. Pizza" name="data.meetingEnd" [(ngModel)]="data.meetingEnd" value="{{data.meetingEnd}}">
+      </mat-form-field>
+    </div>
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Protokollbeschreibung</mat-label>
+      <textarea [readonly]="isDone" name="data.description" [(ngModel)]="data.description" matInput placeholder="Ex. It makes me feel...">{{data.description}}</textarea>
+    </mat-form-field>
+  </div>
+
+  <div style="display: none;">
+    <div id="htmlData" #htmlData>
+      <div style="position:absolute;top:1.90in;left:6.49in;width:1.93in;line-height:0.13in;"><span
+        style="font-style:normal;font-weight:normal;font-size:9pt;color:#929292">Berufskolleg </span><span
+        style="font-style:normal;font-weight:normal;font-size:9pt;color:#929292">–</span><span
+        style="font-style:normal;font-weight:normal;font-size:9pt;color:#929292"> Sekundarstufe II</span><span
+        style="font-style:normal;font-weight:normal;font-size:9pt;color:#929292"> </span><br/></div>
+      <div style="position:absolute;top:2.05in;left:6.49in;width:1.48in;line-height:0.13in;"><span
+        style="font-style:normal;font-weight:normal;font-size:9pt;color:#929292">Berufliches Gymnasium</span><span
+        style="font-style:normal;font-weight:normal;font-size:9pt;color:#929292"> </span><br/></div>
+      <div style="position:absolute;top:2.30in;left:6.59in;width:1.38in;line-height:0.13in;"><span
+        style="font-style:normal;font-weight:normal;font-size:9pt;color:#929292"></span><span
+        style="font-style:normal;font-weight:normal;font-size:9pt;color:#929292"> Informationstechnik</span><span
+        style="font-style:normal;font-weight:normal;font-size:9pt;color:#929292"> </span><br/></div>
+      <div style="position:absolute;top:2.46in;left:6.59in;width:0.16in;line-height:0.13in;"><span
+        style="font-style:normal;font-weight:normal;font-size:9pt;color:#929292"></span><span
+        style="font-style:normal;font-weight:normal;font-size:9pt;color:#929292"> </span><br/></div>
+      <div style="position:absolute;top:2.46in;left:6.75in;width:0.92in;line-height:0.13in;"><span
+        style="font-style:normal;font-weight:normal;font-size:9pt;color:#929292">Systemtechnik</span><span
+        style="font-style:normal;font-weight:normal;font-size:9pt;color:#929292"> </span><br/></div>
+      <div style="position:absolute;top:2.63in;left:0.86in;width:3.49in;line-height:0.12in;"><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">Georg-Simon-Ohm-Berufskolleg, Westerwaldstr. 92, 51105 Köln</span><span
+        style="font-style:normal;font-weight:normal;font-size:10pt;color:#929292"> </span><br/></div>
+      <div style="position:absolute;top:2.61in;left:6.59in;width:1.27in;line-height:0.13in;"><span
+        style="font-style:normal;font-weight:normal;font-size:9pt;color:#929292"></span><span
+        style="font-style:normal;font-weight:normal;font-size:9pt;color:#929292"> Mediengestaltung</span><span
+        style="font-style:normal;font-weight:normal;font-size:9pt;color:#929292"> </span><br/></div>
+      <img style="position:absolute;top:11.71in;left:0.84in;width:7.56in;height:0.01in" alt="1"
+           src="assets/images/pdf-export/ci_1.png"/>
+      <div style="position:absolute;top:11.77in;left:0.86in;width:0.69in;line-height:0.11in;"><span
+        style="font-style:normal;font-weight:bold;font-size:8pt;color:#000000">Schulleiter:</span><span
+        style="font-style:normal;font-weight:bold;font-size:8pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:11.77in;left:2.49in;width:0.70in;line-height:0.11in;"><span
+        style="font-style:normal;font-weight:bold;font-size:8pt;color:#000000">Sekretariat:</span><span
+        style="font-style:normal;font-weight:bold;font-size:8pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:11.77in;left:4.00in;width:0.70in;line-height:0.11in;"><span
+        style="font-style:normal;font-weight:bold;font-size:8pt;color:#000000">Bürozeiten:</span><span
+        style="font-style:normal;font-weight:bold;font-size:8pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:11.77in;left:6.18in;width:0.31in;line-height:0.11in;"><span
+        style="font-style:normal;font-weight:bold;font-size:8pt;color:#000000">Tel</span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">.: </span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:11.77in;left:7.00in;width:1.17in;line-height:0.11in;"><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">(0221) 8 39 13-20/21</span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:11.91in;left:0.86in;width:0.66in;line-height:0.11in;"><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">{{settings.schulleiter}}</span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:11.91in;left:2.49in;width:0.71in;line-height:0.11in;"><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">Frau Goepel</span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:11.91in;left:4.00in;width:1.55in;line-height:0.11in;"><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">Mo </span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">–</span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000"> Do: </span><br/></div>
+      <div style="position:absolute;top:11.91in;left:4.00in;width:1.55in;line-height:0.11in;">
+        <DIV style="position:relative; left:0.55in;"><span
+          style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">  </span><span
+          style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">8.00 </span><span
+          style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">–</span><span
+          style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000"> 15.00 Uhr</span><span
+          style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000"> </span><br/></DIV>
+      </div>
+      <div style="position:absolute;top:11.91in;left:6.18in;width:0.31in;line-height:0.11in;"><span
+        style="font-style:normal;font-weight:bold;font-size:8pt;color:#000000">Fax</span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">: </span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:11.91in;left:7.00in;width:1.00in;line-height:0.11in;"><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">(0221) 8 39 13-</span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">28</span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:12.05in;left:0.86in;width:1.09in;line-height:0.11in;"><span
+        style="font-style:normal;font-weight:bold;font-size:8pt;color:#000000">Stellv. Schulleiter:</span><span
+        style="font-style:normal;font-weight:bold;font-size:8pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:12.05in;left:2.49in;width:0.62in;line-height:0.11in;"><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">Frau Meier</span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:12.05in;left:4.00in;width:0.22in;line-height:0.11in;"><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">Do:</span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:12.05in;left:4.54in;width:1.25in;line-height:0.11in;"><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">15.00 </span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">–</span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000"> 17.00 Uhr n.V.</span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:12.05in;left:6.18in;width:0.46in;line-height:0.11in;"><span
+        style="font-style:normal;font-weight:bold;font-size:8pt;color:#000000">E-Mail</span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">: </span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:12.05in;left:7.00in;width:1.16in;line-height:0.11in;"><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">buero@gso-koeln.de</span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:12.19in;left:0.86in;width:0.55in;line-height:0.11in;"><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">{{settings.stellverteter}}</span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:12.19in;left:2.49in;width:0.56in;line-height:0.11in;"><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">Frau Paul</span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:12.19in;left:4.00in;width:0.18in;line-height:0.11in;"><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">Fr:</span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:12.19in;left:4.54in;width:1.01in;line-height:0.11in;"><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">  </span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">8.00 </span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">–</span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000"> 13.00 Uhr</span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:12.19in;left:6.18in;width:2.15in;line-height:0.11in;"><span
+        style="font-style:normal;font-weight:bold;font-size:8pt;color:#000000">Homepage</span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">: </span><span
+        style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:12.19in;left:6.18in;width:2.15in;line-height:0.11in;">
+        <DIV style="position:relative; left:0.82in;"><a href="http://www.gso-koeln.de"><span
+          style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000">http://www.gso-koeln.de</span></a>
+          <span style="font-style:normal;font-weight:normal;font-size:8pt;color:#000000"> </span><br/></DIV>
+      </div>
+      <img style="position:absolute;top:0.34in;left:0.80in;width:7.73in;height:0.40in" alt="1"
+           src="assets/images/pdf-export/ri_1.png"/>
+      <div style="position:absolute;top:0.45in;left:1.51in;width:0.82in;line-height:0.12in;"><span
+        style="font-style:normal;font-weight:normal;font-size:11pt;color:#ffffff">Stadt Köln<span
+        style="font-style:normal;font-weight:bold;font-size:11pt;color:#ffffff"> </span><br/></span></div>
+      <img style="position:absolute;top:0.96in;left:6.48in;width:1.95in;height:0.75in" alt="1"
+           src="assets/images/pdf-export/ri_2.png"/>
+      <img style="position:absolute;top:0.38in;left:0.86in;width:0.40in;height:0.34in" alt="1"
+           src="assets/images/pdf-export/ri_3.png"/>
+      <div style="position:absolute;top:3.07in;left:6.77in;width:0.96in;line-height:0.16in;"><span
+        style="font-style:normal;font-weight:normal;font-size:11pt;color:#000000">Köln, Datum {{curDate | date}}</span><span
+        style="font-style:normal;font-weight:normal;font-size:11pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:3.45in;left:0.86in;width:6.32in;line-height:0.20in;"><span
+        style="font-style:normal;font-weight:bold;font-size:14pt;color:#000000">Protokoll ({{data.title}} <span
+        style="font-style:italic;font-weight:normal;font-size:11pt;color:#000000">{{data.author}}</span><span
+        style="font-style:normal;font-weight:bold;font-size:14pt;color:#000000">) </span><span
+        style="font-style:normal;font-weight:bold;font-size:14pt;color:#000000">der Bereichskonferenz IT-Berufe </span><span
+        style="font-style:normal;font-weight:bold;font-size:14pt;color:#000000"> </span><br/></span></div>
+      <div style="position:absolute;top:3.89in;left:0.86in;width:7in;line-height:0.16in;"><span
+        style="font-style:normal;font-weight:normal;font-size:11pt;color:#000000">Datum: {{data.creationDate | date}}</span><span
+        style="font-style:normal;font-weight:normal;font-size:11pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:4.08in;left:0.86in;width:6in;line-height:0.16in;"><span
+        style="font-style:normal;font-weight:normal;font-size:11pt;color:#000000">Ort: Raum {{data.room}} </span><span
+        style="font-style:normal;font-weight:normal;font-size:11pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:4.27in;left:0.86in;width:6in;line-height:0.16in;"><span
+        style="font-style:normal;font-weight:normal;font-size:11pt;color:#000000">Beginn: {{data.meetingStart}}</span><span
+        style="font-style:normal;font-weight:normal;font-size:11pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:4.46in;left:0.86in;width:6in;line-height:0.16in;"><span
+        style="font-style:normal;font-weight:normal;font-size:11pt;color:#000000">Ende: {{data.meetingEnd}}</span><span
+        style="font-style:normal;font-weight:normal;font-size:11pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:4.85in;left:0.86in;width:6in;line-height:0.17in;"><span
+        style="font-style:normal;font-weight:normal;font-size:12pt;color:#000000">Leitung: {{data.leader}}</span><span
+        style="font-style:normal;font-weight:normal;font-size:12pt;color:#000000"> </span><br/></div>
+      <div style="position:absolute;top:5.06in;left:0.86in;width:7in;line-height:0.17in;"><span
+        style="font-style:normal;font-weight:normal;font-size:12pt;color:#000000">Teilnehmer:innen: {{participantsText}}</span><span
+        style="font-style:normal;font-weight:normal;font-size:12pt;color:#000000"> </span><br/></div>
+        <div style="position: absolute;top:5.67in;left:0.86in;width:2.12in;line-height:0.17in;"><span
+          style="font-style:normal;font-weight:bold;font-size:12pt;color:#000000">Tagesordnungspunkte: </span><span
+          style="margin-bottom: 1rem;font-style:normal;font-weight:bold;font-size:12pt;color:#000000"> </span><br/>
+
+          <div style="margin-top: 1rem;" *ngFor="let agendaItem of data.agendaItems">
+            <div style="width:2.76in;line-height:0.16in;"><span
+              style="font-style:normal;font-weight:bold;font-size:11pt;color:#000000">{{agendaItem.title}}</span><span
+              style="font-style:normal;font-weight:bold;font-size:11pt;color:#000000"> </span><br/>
+            </div>
+            <div style="width:2.90in;line-height:0.16in;"><span
+              style="font-style:normal;font-weight:normal;font-size:11pt;color:#000000">{{agendaItem.decision}}</span><span
+              style="font-style:normal;font-weight:normal;font-size:11pt;color:#000000"> </span><br/></div>
+          </div>
+
+        </div>
+    </div>
+  </div>
+
+  <h3>Tagesordnungspunkte ({{this.data.agendaItems.length}})</h3>
+
+  <mat-accordion>
+    <mat-expansion-panel
+      *ngFor="let agendaItem of data.agendaItems"
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{agendaItem.title}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="metadata-form">
+        <div *ngIf="!isDone" class="form-row">
+          <mat-form-field class="agenda-item" appearance="outline">
+            <mat-label>Tagesordnungspunkt</mat-label>
+            <input matInput placeholder="Ex. Pizza" [(ngModel)]="agendaItem.title" [value]="agendaItem.title">
+          </mat-form-field>
+        </div>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Notizen</mat-label>
+          <textarea [readonly]="isDone" name="agendaItem.notes" [(ngModel)]="agendaItem.notes" matInput placeholder="Ex. It makes me feel..."></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Beschluss</mat-label>
+          <textarea [readonly]="isDone" name="agendaItem.decision" [(ngModel)]="agendaItem.decision" matInput placeholder="Ex. It makes me feel..."></textarea>
+        </mat-form-field>
+      </div>
+      <button *ngIf="!isDone" (click)="deleteAgendaItem(agendaItem.id)" style="float: right;" color="warn" mat-button>Löschen</button>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <button *ngIf="!isDone" (click)="addAgendaItem()" matTooltip="Tagesordnungspunkt erstellen" mat-fab color="primary"
+          class="create-agenda-item-button" aria-label="Example icon button with a delete icon">
+    <mat-icon>add</mat-icon>
+  </button>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button cdkFocusInitial mat-dialog-close>Abbrechen</button>
+  <button color="warn" mat-button mat-dialog-close (click)="deleteProtocol()">Löschen</button>
+  <button mat-button mat-dialog-close (click)="openPDF()">Exportieren</button>
+  <button *ngIf="data.status !== 'DONE'" mat-button (click)="changeStatusToDone()">Protokoll schließen</button>
+  <button *ngIf="!isDone" mat-button mat-dialog-close (click)="updateProtocol()">Protokoll aktualisieren</button>
+</mat-dialog-actions>
